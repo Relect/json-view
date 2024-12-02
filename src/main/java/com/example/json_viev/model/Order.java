@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Getter
@@ -23,6 +22,7 @@ public class Order {
 
     @OneToMany(mappedBy = "order", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Product> products;
+    @Transient
     private double summ;
     @Enumerated(value = EnumType.STRING)
     private Status status;
