@@ -15,6 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -26,7 +27,8 @@ public class User {
     @Email(message = "неверный формат электронной почты")
     @JsonView(Views.UserSummary.class)
     private String email;
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
     @JsonView(Views.UserDetails.class)
     private List<Order> orders;
 
